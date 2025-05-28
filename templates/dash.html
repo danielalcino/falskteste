@@ -1,0 +1,86 @@
+{% extends "base1.html" %}
+{% block title %}DashBoard{% endblock %}
+{% block content %}
+<style>
+    .conteudoDash{
+        display: inline-flex;
+        flex-flow: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+    .card{
+        width: 40%;
+        display: flex;
+        border-radius: 0.85rem;
+        flex-direction: column;
+        box-shadow: 0 0 10px #24242433;
+        padding: 2rem;
+        align-items: center;
+    }
+    .card>div.top{
+        display: inline-flex;
+        gap: 10px;
+        margin: 0 auto 0 0;
+        align-items: center;
+        color: var(--blue-card);
+    }
+    .card>div.top>h3{
+        font-size: medium;
+        color: var(--blue-card);
+    }
+    .card>div.texto{
+        font-size: larger;
+        color: var(--blue-card);
+    }
+    .por_categoria{
+        background-color: var(--blue-card);
+    }
+    .por_categoria>div.top>h3{
+        color: var(--white-color);
+    }
+    .por_categoria>div.texto{
+        color: var(--white-color);
+    }
+</style>
+<div class="conteudoDash">
+    <div class="card professionaisAtivos">
+        <div class="top"><img src="../static/img/Advogado.png" alt=""> <h3>Professionais Ativos</h3></div>
+        <div class="texto">+350</div>
+    </div>
+    <div class="card services_publicados">
+        <div class="top"><img src="../static/img/Serviço.png" alt=""> <h3>Serviços Publicados</h3></div>
+        <div class="texto">+1200</div>
+    </div>
+    <div class="card clientes_satisfeitos">
+        <div class="top"><img src="../static/img/Tarefa Concluída.png" alt=""> <h3>Clientes Satisfeitos</h3></div>
+        <div class="texto">+800</div>
+    </div>
+    <div class="card bairros_atendidos">
+        <div class="top"><img src="../static/img/Folder-Invoices.png" alt=""> <h3>Bairros Atendidos</h3></div>
+        <div class="texto">45</div>
+    </div>
+    <div class="card crecimento_mensal">
+        <div class="top"><img src="../static/img/Estatísticas.png" alt=""> <h3>Crescimento mensal de cadastros</h3></div>
+        <div class="texto">+3900</div>
+    </div>
+    <div class="card por_categoria">
+        <div class="top"><img src="../static/img/Health-Graph.png" alt=""> <h3>Distribução por categoria</h3></div>
+        <div class="texto">12</div>
+    </div>
+
+    <div class="sms">
+        <div>
+            <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                Aliquid quo enim, maiores ducimus voluptates exercitationem 
+                vero accusamus cumque, sed, nulla fugit reiciendis rem? 
+                Vero fuga voluptatem ut ipsum sunt laboriosam!
+            </p>
+        </div>
+        <div>
+            <button>Cliente</button>
+            <button>Professional</button>
+        </div>
+    </div>
+</div>
+{% endblock %}
