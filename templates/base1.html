@@ -10,11 +10,11 @@
     <style>
         @font-face {
             font-family: 'poppins';
-            src: url('../static/fontesDeLetra/poppins/Poppins-Regular.ttf') format(opentype);
+            src: url('../static/fontesDeLetra/poppins/Poppins-Regular.ttf') format(truetype);
         }
         @font-face {
             font-family: 'poppinsBold';
-            src: url('../static/fontesDeLetra/poppins/Poppins-Bold.ttf') format(opentype);
+            src: url('../static/fontesDeLetra/poppins/Poppins-Bold.ttf') format(truetype);
         }
         *{
             font-family: 'poppins';
@@ -131,9 +131,9 @@
                 <div>
                     <h3>REDES SOCIAIS</h3>
                     <ul>
-                    <li><i class="fab fa-facebook-f"></i> <a href="">Facebook</a></li>
-                    <li><i class="fab fa-whatsapp"></i> <a href="">Whatsapp</a></li>
-                    <li><i class="fab fa-instagram"></i> <a href="">Instagram</a></li>
+                        <li><i class="fab fa-facebook-f"></i> <a href="https://www.facebook.com/daniel.alcino.2025">Facebook</a></li>
+                        <li><i class="fab fa-whatsapp"></i> <a href="https://wa.me/244935934634?text=Olá%2C%20quero%20mais%20informações!" target="_blank">Whatsapp</a></li>
+                        <li><i class="fab fa-instagram"></i> <a href="https://www.instagram.com/daniel.alcino/">Instagram</a></li>
                     </ul>
                 </div>
             
@@ -148,11 +148,11 @@
                     <h3>LINKS</h3>
                     <ul>
                         <li><a href="#"><i class="fas fa-user-plus"></i> Registrar-se como Cliente</a></li>
-                        <li><a href="#"><i class="fas fa-briefcase"></i> Registrar-se como Profissional</a></li>
+                        <li><a href="{{url_for('addProfessional')}}"><i class="fas fa-briefcase"></i> Registrar-se como Profissional</a></li>
                         <li><a href="#"><i class="fas fa-user-tie"></i> Login Profissional</a></li>
                         <li><a href="#"><i class="fas fa-user"></i> Login Cliente</a></li>
                         <li><a href="#"><i class="fas fa-home"></i> Início</a></li>
-                        <li><a href="#"><i class="fas fa-chart-line"></i> Dashboard</a></li>
+                        <li><a href="{{url_for('dashboard')}}"><i class="fas fa-chart-line"></i> Dashboard</a></li>
                     </ul>
                     
                 </div>

@@ -2,7 +2,7 @@
 {% block title %}DashBoard{% endblock %}
 {% block content %}
     <style>
-        div.formularioConteiner{
+        div.formularioConteiner {
             display: flex;
             flex-direction: column;
             width: auto;
@@ -11,25 +11,25 @@
             align-self: center;
             justify-content: center;
         }
-        div.title>h3{
+        div.title > h3 {
             align-items: center;
             align-self: center;
             justify-content: center;
             color: var(--white-color);
             font-family: 'poppinsBold';
         }
-        form{
+        form {
             align-items: center;
             align-self: center;
             justify-content: center;
             border-radius: 12px;
-            background-color: var(--white-color);
+            background-color: var(--form-add);
             padding: 2em;
             display: flex;
             flex-direction: column;
             gap: 15px;
         }
-        form>div{
+        form > div {
             align-items: center;
             align-self: center;
             justify-content: center;
@@ -37,85 +37,138 @@
             flex-direction: column;
             gap: 15px;
         }
-        div.campos{
-            align-items: center;
-            align-self: center;
+        div.campos {
+            position: relative;
             display: inline-flex;
-            gap: 5px;
-            padding: 5px 5px 5px 1em;
-            border-radius: 120px;
-            background-color: var(--blue-card);
-            width: 100%;
-        }
-        div.campos>input{
-            border-radius: 120px;
-            color: var(--white-color);
-            font-weight: 900;
-            background-color: transparent;
-            border: none;
-            padding: 0.90em;
-            width: 100%;
-        }
-        div.campos>input:focus {
-            background-color: #ffffff59;
-            color: var(--white-color);
-            outline: none;
-            box-shadow: 0 0 0 2px #ffffff56;
-          }
-        div.campos>i{
             align-items: center;
-            align-self: center;
-            justify-content: center;
-            padding: 3px;
+            border-radius: 12px;
+            width: 100%;
         }
-        i.fas{
-            padding: 10px;
-            margin: 0 auto;
+        div.campos input {
+            align-items: center;
+            justify-items: center;
+            border: none;
+            background: var(--percent-transp);
+            width: 100%;
+            font-weight: 900;
+            color: var(--white-color);
+            padding: 1em;
+            border-radius: 12px;
+            font-size: 1em;
+            outline: none;
+            transition: border 0.2s ease;
+        }
+        div.campos input::placeholder {
+            color: transparent;
+        }
+        div.campos input:focus {
+            background-color: var(--form-add);
+            box-shadow: 0 0 0 2px var(--blue-card);
+        }
+        div.campos input.filled {
+            border: 1px solid var(--blue-card);
+        }
+        div.campos label {
+            position: absolute;
+            left: 2.5em;
+            top: 1.1em;
+            color: var(--blue-card);
+            font-size: 1em;
+            pointer-events: none;
+            padding: 5px;
+            transition: all 0.2s ease;
+            padding: 0 0.25em;
+        }
+        div.campos input:focus + label,
+        div.campos input:not(:placeholder-shown) + label {
+            top: -0.8em;
+            left: 0.2em;
+            font-size: 0.95em;
+            color: var(--blue-card);
+            background-color: var(--form-add);
+        }
+        div.campos > i {
+            position: absolute;
+            left: 0.7em;
             color: #fff;
+            font-size: large;
+        }
+        .btnAddProfessional {
+            padding: 1em;
+            cursor: pointer;
+            background-color: var(--blue-card);
+            border-radius: 12px;
+            color: var(--blue-logo);
+            font-weight: bold;
         }
     </style>
+
     <div class="formularioConteiner">
         <div class="title">
             <h3>Cadastro Professional</h3>
         </div>
-        <form action="">
+        <form method="post">
+            {{ form.hidden_tag() }}
             <div class="inputsconteiner">
                 <div class="campos nome">
-                    <i class="fas fa-user"></i>
-                    {{ form.nome() }}
+                    {{ form.nome(placeholder=" ") }}
+                    <label for="nome">Nome</label>
                 </div>
                 <div class="campos email">
-                    <i class="fas fa-envelope"></i>
-                    {{ form.email() }}
+                    {{ form.email(placeholder=" ") }}
+                    <label for="email">Email</label>
                 </div>
                 <div class="campos localidade">
-                    <i class="fas fa-map-marker-alt"></i>
-                    {{ form.localidade() }}
+                    {{ form.localidade(placeholder=" ") }}
+                    <label for="localidade">Localidade</label>
                 </div>
                 <div class="campos service">
-                    <i class="fas fa-briefcase"></i>
-                    {{ form.service() }}
+                    {{ form.service(placeholder=" ") }}
+                    <label for="service">Serviço</label>
                 </div>
                 <div class="campos telefone">
-                    <i class="fas fa-phone"></i>
-                    {{ form.telefone(class="telefone") }}
+                    {{ form.telefone(class="telefone", placeholder=" ") }}
+                    <label for="telefone">Telefone</label>
                 </div>
                 <div class="campos senha">
-                    <i class="fas fa-lock"></i>
-                    {{ form.senha() }}
+                    {{ form.senha(placeholder=" ") }}
+                    <label for="senha">Senha</label>
                 </div>
                 <div class="campos nascimento">
-                    <i class="fas fa-calendar-alt"></i>
-                    {{ form.nascimento() }}
+                    {{ form.nascimento(placeholder=" ") }}
+                    <label for="nascimento">Data de Nascimento</label>
+                </div>
+                <div class="campos">
+                    {{ form.submit(class="btnAddProfessional",style="padding: 1em;
+                        cursor: pointer;
+                        background-color: var(--blue-btn);
+                        border-radius: 12px;
+                        color: var(--blue-card);
+                        font-weight: bold;") }}
                 </div>
             </div>
-            
         </form>
     </div>
+
     <script>
-        const telefone = document.querySelector('.telefone')
         $(document).ready(function(){
             $('input[type="tel"]').mask('900 000 000');
+
+            // Aplica classe "filled" nos inputs com valor inicial
+            $('input').each(function() {
+                if ($(this).val()) {
+                    $(this).addClass('filled');
+                }
+            });
+
+            // Ao digitar ou sair do campo
+            $('input').on('input blur', function() {
+                if ($(this).val()) {
+                    $(this).addClass('filled');
+                } else {
+                    $(this).removeClass('filled');
+                }
+            });
         });
     </script>
-{% endblock%}
+{% endblock %}
