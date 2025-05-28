@@ -29,9 +29,7 @@ def dashboard():
 @app.route('/addProfessional', methods=['GET', 'POST'])
 def addProfessional():
     form = cadastroProfessional()
-    print("Método:", request.method)
-    print("Validou?", form.validate_on_submit())
-    print("Erros:", form.errors)
+    
     if form.validate_on_submit():
         # Captura os dados
         nome_professional = form.nome.data
