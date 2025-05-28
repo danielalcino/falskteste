@@ -19,7 +19,7 @@ class cadastroProfessional(FlaskForm):
     email = StringField('Email', render_kw={'placeholder':'E-mail'}, validators=[DataRequired(), Email()])
     localidade = StringField('Localidade', render_kw={'placeholder':'Província, Município'}, validators=[DataRequired()])
     service = StringField('Área Especializada', render_kw={'placeholder':'Tipo de serviço a prestar'}, validators=[DataRequired()])
-    telefone = IntegerField('Telefone', render_kw={'placeholder':'9xx xxx xxx', 'id':'telefoneProfessional'}, validators=[DataRequired()])
+    telefone = IntegerField('Telefone', render_kw={'placeholder':'9xx xxx xxx', 'id':'telefoneProfessional', 'type':'tel'}, validators=[DataRequired()])
     senha = PasswordField('Senha', render_kw={'placeholder':'Senha'}, validators=[DataRequired()])
     nascimento = DateField('Data de nascimento', render_kw={'placeholder':'Data de Nascimento'}, validators=[DataRequired()])
     submit = SubmitField('Adicionar Produto')

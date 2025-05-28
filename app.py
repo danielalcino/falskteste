@@ -56,9 +56,9 @@ def addProfessional():
             flash('Cadstro realizado com sucesso!', 'success') 
             return redirect(url_for('addProfessional'))
 
-    return render_template('addProfessional.html')
+    return render_template('addProfessional.html', form=form)
 
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
-    app.run(debug=True)
+    app.run(debug=True, port=8080)
