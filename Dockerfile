@@ -15,4 +15,8 @@ RUN pip install --no-cache-dir -r requirements.txt
 EXPOSE 8080
 
 # Comando para iniciar a aplicação usando Gunicorn
-CMD ["gunicorn", "-b", "0.0.0.0:8080", "KandeguesJobs.app:app"]
+ENV FLASK_APP=app.py
+
+CMD ["flask", "run", "--host=0.0.0.0", "--port=8080"]
+
+
