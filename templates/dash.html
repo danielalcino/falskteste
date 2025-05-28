@@ -41,6 +41,33 @@
     .por_categoria>div.texto{
         color: var(--white-color);
     }
+    div.buttons{
+        padding: 2em;
+    }
+    .btn{
+        width: 20%;
+        padding: 10px;
+        cursor: pointer;
+    }
+    .btnCliente{
+        background-color: var(--blue-card);
+        color: var(--white-color);
+    }
+    .btnProfessional{
+        background-color: var(--blue-logo);
+        color: var(--blue-card);
+    }
+    .sms{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        align-self: center;
+        justify-content: center;
+        width: 100%;
+        padding: 20px;
+        color: var(--blue-card);
+
+    }
 </style>
 <div class="conteudoDash">
     <div class="card professionaisAtivos">
@@ -77,9 +104,9 @@
                 Vero fuga voluptatem ut ipsum sunt laboriosam!
             </p>
         </div>
-        <div>
-            <button>Cliente</button>
-            <button>Professional</button>
+        <div class="buttons">
+            <button class="btn btnCliente">Cliente</button>
+            <button class="btn btnProfessional">Professional</button>
         </div>
     </div>
 </div>
