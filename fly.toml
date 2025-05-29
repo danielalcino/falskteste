@@ -22,7 +22,7 @@ primary_region = 'jnb'
   cpus = 1
 
 [deploy]
-  release_command = "python migrate.py"
+# release_command = "python migrate.py"
 
 
 [mounts]
