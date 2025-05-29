@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, request, flash
+from flask import Flask, jsonify, request, render_template, redirect, url_for, request, flash
 from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager, login_user, login_required, logout_user, current_user
 from config import Config
@@ -30,39 +30,67 @@ def dashboard():
 def addProfessional():
     form = cadastroProfessional()
     
-    if form.validate_on_submit():
-        # Captura os dados
-        nome_professional = form.nome.data
-        email_professional = form.email.data
-        services = form.service.data
-        telefone_professional = form.telefone.data
-        senha_professional = generate_password_hash(form.senha.data)
-        localidade_professional = form.localidade.data
-        data_professional = form.nascimento.data
-
-        # Verifica se o email já existe
-        existente = Professional.query.filter_by(email=email_professional).first()
-        if existente:
+    if request.method == 'POST':
+        if form.validate_on_submit():
+            email_professional = form.email.data
+            existente = Professional.query.filter_by(email=email_professional).first()
             
-            return redirect(url_for('addProfessional'))
-        else:
-            # Cria o novo registro
-            novo_profissional = Professional(
-                nome=nome_professional,
-                email=email_professional,
-                localidade=localidade_professional,
-                nascimento=data_professional,
-                telefone=telefone_professional,
-                especialidade=services,
-                senha=senha_professional,
-            )
+            if existente:            
+                return redirect(url_for('addProfessional'))
+            
+            else:
+                try:
+                    # Cria o novo registro
+                    novo_profissional = Professional(
+                        nome=form.nome.data,
+                        email=form.email.data,
+                        localidade=form.localidade.data,
+                        nascimento=form.nascimento.data,
+                        telefone=form.telefone.data,
+                        especialidade=form.service.data,
+                        senha=generate_password_hash(form.senha.data),
+                    )
 
-            # Adiciona no banco de dados
-            db.session.add(novo_profissional)
-            db.session.commit()
-            return redirect(url_for('addProfessional'))  # Evita duplicações com o PRG
+                    # Adiciona no banco de dados
+                    db.session.add(novo_profissional)
+                    db.session.commit()
+                    return jsonify({'success': True, 'message': 'Cadastro realizado com sucesso!'})
+                
+                except Exception as e:
+                    db.session.rollback()
+                    return jsonify({'success': False, 'message': 'Erro ao cadastrar cliente.'})
+                
+        else:
+            return jsonify({'success': False, 'message': 'Dados inválidos. Verifique os campos.'})
 
     return render_template('addProfessional.html', form=form)
+
+@app.route('/addCliente', methods=['GET', 'POST'])
+def addCliente():
+    form = cadastroCliente()
+
+    if request.method == 'POST':
+        if form.validate_on_submit():
+            try:
+                novo_cliente = Cliente(
+                    nome=form.nome.data,
+                    email=form.email.data,
+                    localidade=form.localidade.data,
+                    telefone=form.telefone.data,
+                    senha=generate_password_hash(form.senha.data),
+                    nascimento=form.nascimento.data,
+                )
+                db.session.add(novo_cliente)
+                db.session.commit()
+                return jsonify({'success': True, 'message': 'Cadastro realizado com sucesso!'})
+            except Exception as e:
+                db.session.rollback()
+                return jsonify({'success': False, 'message': 'Erro ao cadastrar cliente.'})
+        else:
+            return jsonify({'success': False, 'message': 'Dados inválidos. Verifique os campos.'})
+
+    return render_template('addCliente.html', form=form)
+
 
 #start app bbbgf
 if __name__ == '__main__':

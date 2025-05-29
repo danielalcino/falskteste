@@ -1,7 +1,7 @@
 {% extends "base2.html" %}
 {% block title %}DashBoard{% endblock %}
 {% block content %}
-<script src="../static/js/addProfessional.js"></script>
+<script src="../static/js/addCliente.js"></script>
     <style>
         body{
             background-color: var(--bg-color);
@@ -101,7 +101,7 @@
             color: var(--blue-card);
             font-size: large;
         }
-        .btnAddProfessional {
+        .btnAddCliente {
             padding: 1em;
             width: 100%;
             border: 1px solid var(--blue-card);
@@ -115,9 +115,9 @@
 
     <div class="formularioConteiner">
         <div class="title">
-            <h3>Cadastro Professional</h3>
+            <h3>Cadastro Cliente</h3>
         </div>
-        <form id="formProfessional">
+        <form id="formCliente">
             {{ form.hidden_tag() }}
             <div class="inputsconteiner">
                 <div class="campos nome">
@@ -135,11 +135,6 @@
                     {{ form.localidade(placeholder=" ") }}
                     <label for="localidade">Localidade</label>
                 </div>
-                <div class="campos service">
-                    <i class="fas fa-tools fa-lg"></i>
-                    {{ form.service(placeholder=" ") }}
-                    <label for="service">Serviço</label>
-                </div>
                 <div class="campos telefone">
                     <i class="fas fa-phone-alt fa-lg"></i>
                     {{ form.telefone(class="telefone", placeholder=" ") }}
@@ -154,8 +149,9 @@
                     <i class="fas fa-calendar-alt fa-lg"></i>
                     {{ form.nascimento(placeholder=" ") }}
                     <label for="nascimento">Data de Nascimento</label>
-                </div><div class="campos">
-                    <button type="submit" class="btnAddProfessional" style="padding: 1em;cursor: pointer;background-color: var(--blue-btn);border-radius: 12px;color: var(--blue-card);font-weight: bold;">Cadastrar Cliente</button>
+                </div>
+                <div class="campos">
+                    <button type="submit" class="btnAddCliente" style="padding: 1em;cursor: pointer;background-color: var(--blue-btn);border-radius: 12px;color: var(--blue-card);font-weight: bold;">Cadastrar Cliente</button>
                 </div>
             </div>
         </form>
