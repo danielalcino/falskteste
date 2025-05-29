@@ -1,5 +1,221 @@
 {% extends "base1.html" %}
 {% block title %}DashBoard{% endblock %}
 {% block content %}
-    <h1>Olá, bem vindo ao inicio. Daniel</h1>
+<style>
+    .Conteudo{
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+    }
+    .professional{
+        display: flex;
+        flex-direction: column;
+        padding: 0 40px 30px 40px;
+        background-color: var(--blue-card);
+        gap: 30px;
+    }
+    div.top{
+        width: 100%;
+        align-items: center;
+        align-self: center;
+        gap: 8px;
+        padding: 0;
+        justify-content: right;
+    }
+    div.top>h3{
+        text-align: right;
+        color: var(--white-color);
+    }
+    div.imgProfes{
+        padding: 14px 16px 16px 16px;
+        background-color: var(--white-color);
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+    }
+    div.imgProfes i{
+        color: var(--blue-card);
+    }
+    div.imgProfes>i{
+        font-size: 4em;
+    }
+    div.descriptionCliente{
+        color: var(--white-color);
+        font-size: medium;
+        font-family: 'poppins';
+    }
+    strong{
+        font-family: 'poppinsBold';
+    }
+    .botoesProfessional{
+        width: 100%;
+    }
+    .btn{
+        padding: 10px;
+        border: none;
+        cursor: pointer;
+        border-radius: 120px;
+        font-family: 'poppinsBold';
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    .professionalLogin{
+        background-color: transparent;
+        color: var(--white-color);
+        border: 1px solid var(--white-color);
+    }
+    .professionalLogin:hover{
+        background-color: var(--white-color);
+        color: var(--blue-card);
+        border: 1px solid var(--white-color);
+        transform: scale(1.03); /* leve aumento no hover */
+    }
+    .professionalCadastro{
+        background-color: var(--white-color);
+        color: var(--blue-card);
+    }
+    .professionalCadastro:hover{
+        background-color: #ffffff81;
+        color: var(--white-color);
+    }
+
+    /*Cliente zone */
+    .cliente{
+        display: flex;
+        flex-direction: column;
+        padding: 0 40px 30px 40px;
+        background-color: var(--white-color);
+        gap: 30px;
+    }
+    .cliente>div.top{
+        width: 100%;
+        align-items: center;
+        align-self: center;
+        gap: 8px;
+        padding: 0;
+        justify-content: left;
+    }
+    .cliente>div.top>h3{
+        text-align: left;
+        color: var(--blue-card);
+    }
+    div.imgCliente{
+        padding: 14px 16px 16px 16px;
+        background-color: var(--blue-card);
+        border-bottom-left-radius: 12px;
+        border-bottom-right-radius: 12px;
+    }
+    div.imgCliente i{
+        color: var(--white-color);
+    }
+    div.imgCliente>i{
+        font-size: 4em;
+    }
+    .cliente>div.description{
+        color: var(--blue-card);
+        font-size: medium;
+        font-family: 'poppins';
+    }
+    strong{
+        font-family: 'poppinsBold';
+    }
+    .botoesCliente{
+        width: 100%;
+    }
+    .btnCliente{
+        padding: 10px;
+        border: none;
+        cursor: pointer;
+        border-radius: 120px;
+        font-family: 'poppinsBold';
+        transition: background-color 0.3s ease, transform 0.2s ease;
+    }
+    .clienteLogin{
+        background-color: transparent;
+        color: var(--blue-card);
+        border: 1px solid var(--blue-card);
+    }
+    .clienteLogin:hover{
+        background-color: var(--blue-card);
+        color: var(--white-color);
+        border: 1px solid var(--blue-card);
+        transform: scale(1.03); /* leve aumento no hover */
+    }
+    .clienteCadastro{
+        background-color: var(--blue-card);
+        color: var(--white-color);
+    }
+    .clienteCadastro:hover{
+        background-color: #ffffff81;
+        color: var(--white-color);
+    }
+    div.description>p{
+        text-align: justify;
+    }
+    .paragrafoCliente{
+        color: var(--blue-card);
+    }
+    .paragrafoProfes{
+        color: var(--white-color);
+    }
+    .paragrafoProfes>h2{
+        font-size: large;
+        font-family: 'poppinsBold';
+        color: var(--white-color);
+    }
+    .paragrafoCliente>h2{
+        font-size: large;
+        font-family: 'poppinsBold';
+        color: var(--blue-card);
+    }
+
+</style>
+    <div class="Conteudo">
+        <div class="card professional">
+            <div class="top">
+                <h3>Login <br> Professional</h3>
+                <div class="imgProfes">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+            </div>
+            <div class="description">
+                <p class="paragrafoProfes">
+                    <h2>
+                        É fera no que faz?
+                        Tem habilidade e quer transformar isso em renda?
+                        Você está no lugar certo!
+                    </h2>
+                    Aqui tem gente de sobra procurando exatamente o que você faz —
+                    seja como freelancer ou profissional independente.
+                    Chegou sua hora de brilhar. Cadastre-se e conquiste o seu espaço!
+                </p>
+            </div>
+            <div class="botoesProfessional">
+                <input type="button" class="btn professionalLogin" value="Login Professional">
+                <input type="button" class="btn professionalCadastro" value="Cadastro Professional">
+            </div>
+        </div>
+
+        <div class="card cliente">
+            <div class="top">
+                <div class="imgCliente">
+                    <i class="fas fa-briefcase"></i>
+                </div>
+                <h3>Login <br> Cliente</h3>
+            </div>
+            <div class="description">
+                <p class="paragrafoCliente">
+                    <h2>
+                        Está precisando de um serviço,  mas contratar 
+                        uma empresa especializada está fora do orçamento?
+                    </h2>
+                    Encontre agora <strong>Freelancers</strong> 
+                    e profissionais independentes na sua região prontos para te atender.
+                    Economize, valorize o talento local e resolva tudo sem complicação!
+                </p>
+            </div>
+            <div class="botoesCliente">
+                <input type="button" class="btnCliente clienteLogin" value="Login Cliente">
+                <input type="button" class="btnCliente clienteCadastro" value="Cadastro Cliente">
+            </div>
+        </div>
+    </div>
 {% endblock %}
