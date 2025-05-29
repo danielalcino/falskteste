@@ -64,6 +64,7 @@ def addProfessional():
 
     return render_template('addProfessional.html', form=form)
 
+#start app bbbgf
 if __name__ == '__main__':
     with app.app_context():
         db.create_all()
