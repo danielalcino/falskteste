@@ -89,6 +89,7 @@ def addCliente():
         else:
             return jsonify({'success': False, 'message': 'Dados inválidos. Verifique os campos.'})
 
+    # Só renderiza a página se for acesso via GET
     return render_template('addCliente.html', form=form)
 
 

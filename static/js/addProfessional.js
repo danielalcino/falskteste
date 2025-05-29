@@ -9,8 +9,17 @@ document.addEventListener("DOMContentLoaded", () => {
             method: "POST",
             body: formData
         });
-
-        const result = await response.json();
+        
+        if (!response.ok) {
+            throw new Error("Erro na requisição");
+        }
+        
+        const contentType = response.headers.get("content-type");
+        if (!contentType || !contentType.includes("application/json")) {
+            throw new Error("Resposta não é JSON.");
+        }
+        
+        const result = await response.json();  
 
         Toastify({
             text: result.message,
