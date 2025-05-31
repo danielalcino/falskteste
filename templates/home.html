@@ -197,8 +197,8 @@
                 </p>
             </div>
             <div class="botoesProfessional">
-                <input type="button" class="btn professionalLogin" value="Login Professional">
-                <input type="button" class="btn professionalCadastro" value="Cadastro Professional">
+                <button type="button" class="btn professionalLogin" >Login Professional </button>
+                <button type="button" class="btn professionalCadastro" onlick="window.location.href="{{url_for('addProfessional')}}" ">Cadastro Professional</button>
             </div>
         </div>
 
@@ -222,7 +222,7 @@
             </div>
             <div class="botoesCliente">
                 <input type="button" class="btnCliente clienteLogin" value="Login Cliente">
-                <input type="button" class="btnCliente clienteCadastro" value="Cadastro Cliente">
+                <button type="button" class="btnCliente clienteCadastro" onlick="window.location.href="{{url_for('addCliente')}}" ">Cadastro Cliente</button>
             </div>
         </div>
     </div>
