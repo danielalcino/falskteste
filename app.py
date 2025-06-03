@@ -35,7 +35,7 @@ def verificar_professionals():
     return "<br>".join([f"{p.nome} - {p.email}" for p in profissionais]) or "Nenhum profissional encontrado."
 
 
-@app.route('/addProfessional', methods=['POST'])
+@app.route('/addProfessional', methods=['GET', 'POST'])
 def addProfessional():
     # Receber dados diretamente do `FormData`, não via `form`
     nome = request.form.get('nome')
