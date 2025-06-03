@@ -7,7 +7,7 @@ WORKDIR /app
 # Copia os arquivos do projeto para o container
 COPY . .
 
-# Instala as dependências
+# Instala as dependência
 RUN pip install --no-cache-dir -r requirements.txt
 
 

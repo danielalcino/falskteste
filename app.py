@@ -8,7 +8,7 @@ from datetime import datetime
 import os
 from werkzeug.security import generate_password_hash, check_password_hash
 from flask_wtf.csrf import CSRFProtect
-
+#muitas alterações
 app = Flask(__name__)
 
 # Geração de chave secreta aleatória para segurança
