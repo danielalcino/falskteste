@@ -7,7 +7,7 @@ from forms import cadastroProfessional, cadastroCliente
 from datetime import datetime
 import os
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_wtf.csrf import CSRFProtect
+from flask_wtf.csrf import CSRFProtect, csrf_exempt
 #muitas alterações
 app = Flask(__name__)
 
