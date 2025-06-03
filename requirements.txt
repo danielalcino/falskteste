@@ -20,3 +20,4 @@ wtforms
 werkzeug
 sqlalchemy
 pymysql
+email-validator
