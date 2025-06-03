@@ -29,44 +29,45 @@ def home():
 def dashboard():
     return render_template('dash.html')
 
-@app.route('/addProfessional', methods=['GET', 'POST'])
+@app.route("/verificar_professionals")
+def verificar_professionals():
+    profissionais = Professional.query.all()
+    return "<br>".join([f"{p.nome} - {p.email}" for p in profissionais]) or "Nenhum profissional encontrado."
+
+
+@app.route('/addProfessional', methods=['POST'])
+@csrf.exempt
 def addProfessional():
-    form = cadastroProfessional()
-    
-    if request.method == 'POST':
-        if form.validate_on_submit():
-            email_professional = form.email.data
-            existente = Professional.query.filter_by(email=email_professional).first()
-            
-            if existente:            
-                return redirect(url_for('addProfessional'))
-            
-            else:
-                try:
-                    # Cria o novo registro
-                    novo_profissional = Professional(
-                        nome=form.nome.data,
-                        email=form.email.data,
-                        localidade=form.localidade.data,
-                        nascimento=form.nascimento.data,
-                        telefone=form.telefone.data,
-                        especialidade=form.service.data,
-                        senha=generate_password_hash(form.senha.data),
-                    )
+    # Receber dados diretamente do `FormData`, não via `form`
+    nome = request.form.get('nome')
+    email = request.form.get('email')
+    telefone = request.form.get('telefone')
+    nascimento = request.form.get('nascimento')
+    localidade = request.form.get('localidade')
+    especialidade = request.form.get('especialidade')
+    senha = request.form.get('senha')
 
-                    # Adiciona no banco de dados
-                    db.session.add(novo_profissional)
-                    db.session.commit()
-                    return jsonify({'success': True, 'message': 'Cadastro realizado com sucesso!'})
-                
-                except Exception as e:
-                    db.session.rollback()
-                    return jsonify({'success': False, 'message': 'Erro ao cadastrar cliente.'})
-                
-        else:
-            return jsonify({'success': False, 'message': 'Dados inválidos. Verifique os campos.'})
+    existente = Professional.query.filter_by(email=email).first()
+    if existente:
+        return jsonify({'success': False, 'message': 'E-mail já cadastrado!'})
 
-    return render_template('addProfessional.html', form=form)
+    try:
+        novo_profissional = Professional(
+            nome=nome,
+            email=email,
+            telefone=telefone,
+            nascimento=datetime.strptime(nascimento, "%Y-%m-%d"),
+            localidade=localidade,
+            especialidade=especialidade,
+            senha=generate_password_hash(senha)
+        )
+
+        db.session.add(novo_profissional)
+        db.session.commit()
+        return jsonify({'success': True, 'message': 'Cadastro realizado com sucesso!'})
+    except Exception as e:
+        db.session.rollback()
+        return jsonify({'success': False, 'message': 'Erro ao cadastrar profissional.'})
 
 @app.route('/addCliente', methods=['GET', 'POST'])
 def addCliente():
