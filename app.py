@@ -7,7 +7,7 @@ from forms import cadastroProfessional, cadastroCliente
 from datetime import datetime
 import os
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_wtf.csrf import CSRFProtect, csrf_exempt
+from flask_wtf.csrf import CSRFProtect
 #muitas alterações
 app = Flask(__name__)
 
@@ -36,7 +36,6 @@ def verificar_professionals():
 
 
 @app.route('/addProfessional', methods=['POST'])
-@csrf.exempt
 def addProfessional():
     # Receber dados diretamente do `FormData`, não via `form`
     nome = request.form.get('nome')
