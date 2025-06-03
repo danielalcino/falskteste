@@ -38,7 +38,8 @@ def verificar_professionals():
 @app.route('/addProfessional', methods=['GET', 'POST'])
 def addProfessional():
     if request.method == 'GET':
-        return '', 204  # Retorna vazio no GET, evita 405
+        return render_template('addProfessional.html'), 204  # Retorna vazio no GET, evita 405
+    
     
     # Receber dados diretamente do `FormData`, não via `form`
     nome = request.form.get('nome')
@@ -70,6 +71,9 @@ def addProfessional():
     except Exception as e:
         db.session.rollback()
         return jsonify({'success': False, 'message': 'Erro ao cadastrar profissional.'})
+    
+    # Só renderiza a página se for acesso via GET
+    return render_template('addProfessional.html', form=form)
 
 @app.route('/addCliente', methods=['GET', 'POST'])
 def addCliente():
