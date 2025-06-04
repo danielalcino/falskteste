@@ -38,7 +38,7 @@ def verificar_professionals():
 @app.route('/addProfessional', methods=['GET', 'POST'])
 def addProfessional():
     if request.method == 'GET':
-        return render_template('addProfessional.html'), 204  # Retorna vazio no GET, evita 405
+        return render_template('addProfessional.html')  # Retorna vazio no GET, evita 405
     
     
     # Receber dados diretamente do `FormData`, não via `form`
