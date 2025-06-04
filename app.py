@@ -73,7 +73,7 @@ def addProfessional():
         return jsonify({'success': False, 'message': 'Erro ao cadastrar profissional.'})
     
     # Só renderiza a página se for acesso via GET
-    return render_template('addProfessional.html', form=form)
+    return render_template('addProfessional.html')
 
 @app.route('/addCliente', methods=['GET', 'POST'])
 def addCliente():
