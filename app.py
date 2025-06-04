@@ -72,8 +72,6 @@ def addProfessional():
         db.session.rollback()
         return jsonify({'success': False, 'message': 'Erro ao cadastrar profissional.'})
     
-    # Só renderiza a página se for acesso via GET
-    return render_template('addProfessional.html')
 
 @app.route('/addCliente', methods=['GET', 'POST'])
 def addCliente():
